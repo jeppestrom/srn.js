@@ -32,7 +32,8 @@ requirejs(['./config', 'express', 'mongoose'], function(config, express, mongoos
     });
 
     server.configure('production', function(){
-        server.use(express.errorHandler());
+        //server.use(express.errorHandler());
+        server.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
     });
 
     requirejs([
