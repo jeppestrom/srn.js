@@ -3,7 +3,7 @@ var requirejs = require('requirejs').config({nodeRequire:require});
 requirejs(['express'], function(express) {
     var me = this;
 
-    var server = module.exports = express.createServer();
+    this.server = express.createServer();
     var port = process.env.PORT || 8000;
 
     this.devmode = port == 8000 ? true : false;
@@ -31,11 +31,10 @@ requirejs(['express'], function(express) {
         server.use(express.errorHandler());
     });
 
-    server.get('/', function(request, response){
-        response.render('index', {
-            title: 'Index'
-        });
-    });
+    requirejs([
+        './controllers/index.js',
+        './controllers/post.js'
+    ]);
 
     server.listen(port, function(){
         console.log("node server listening on port '%d' in '%s' mode.", port, me.devmode ? 'development' : process.env.NODE_ENV);
