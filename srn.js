@@ -8,6 +8,8 @@ requirejs(['./config', 'express', 'mongoose'], function(config, express, mongoos
 
     this.devmode = port == 8000 ? true : false;
 
+    this.mongoose = mongoose;
+    this.Schema = mongoose.Schema;
     mongoose.connect(this.devmode ? config.mongodb.endpoints.localhost : config.mongodb.endpoints.heroku);
 
     server.configure(function(){
@@ -32,6 +34,10 @@ requirejs(['./config', 'express', 'mongoose'], function(config, express, mongoos
     server.configure('production', function(){
         server.use(express.errorHandler());
     });
+
+    requirejs([
+        './models/user.js'
+    ]);
 
     requirejs([
         './controllers/index.js',
