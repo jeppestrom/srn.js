@@ -1,12 +1,14 @@
 var requirejs = require('requirejs').config({nodeRequire:require});
 
-requirejs(['express'], function(express) {
+requirejs(['./config', 'express', 'mongoose'], function(config, express, mongoose) {
     var me = this;
 
     this.server = express.createServer();
     var port = process.env.PORT || 8000;
 
     this.devmode = port == 8000 ? true : false;
+
+    mongoose.connect(this.devmode ? config.mongodb.endpoints.localhost : config.mongodb.endpoints.heroku);
 
     server.configure(function(){
         server.set('views', __dirname + '/views');
