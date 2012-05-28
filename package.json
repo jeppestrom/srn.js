@@ -8,6 +8,7 @@
     "dependencies": {
         "requirejs":"1.0.8",
         "express":"2.5.9",
-        "mongoose":"2.6.0"
+        "mongoose":"2.6.0",
+        "jade":"0.26.1"
     }
 }
