@@ -1,4 +1,4 @@
-define(['./config', 'lib/Base', './server', 'mongoose'], function (config, Base, server, mongoose) {
+define(['./config', './Base', './server', 'mongoose'], function (config, Base, server, mongoose) {
     mongoose.connect(config.environment.devmode ? config.mongodb.endpoints.localhost : config.mongodb.endpoints.heroku);
 
     return {
