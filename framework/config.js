@@ -6,7 +6,14 @@ define(function(){
         }
     };
 
+    var port = process.env.PORT || 8000;
+    var environment = {
+        port:port,
+        devmode:port == 8000 ? true : false
+    };
+
     return {
+        environment: environment,
         mongodb: mongodb
     };
 })
