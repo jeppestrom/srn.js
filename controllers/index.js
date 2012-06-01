@@ -1,5 +1,6 @@
-define(['framework/core'], function (core) {
+define(['framework/core', 'services/blogService'], function (core, blogService) {
     var server = core.server;
+    blogService = new blogService();
 
     return core.Base.extend({
         constructor:function () {
