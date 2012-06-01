@@ -5,8 +5,11 @@ define(['framework/core', 'services/blogService'], function (core, blogService) 
     return core.Base.extend({
         constructor:function () {
             server.get('/', function(request, response){
-                response.render('index', {
-                    title: 'srn.io'
+                blogService.getAllPosts(function (posts) {
+                    response.render('index', {
+                        title: 'srn.io',
+                        posts: posts
+                    });
                 });
             });
         }

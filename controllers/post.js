@@ -4,21 +4,17 @@ define(['framework/core', 'services/blogService'], function (core, blogService) 
 
     return core.Base.extend({
         constructor:function () {
-            server.get('/posts', function(request, response){
+            server.get('/archive', function(request, response){
                 blogService.getAllPosts(function (posts) {
-                    response.render('index', {
+                    response.render('archive', {
                         title: 'post',
                         posts: posts
                     });
                 });
             });
 
-            server.get('/post/create', function(request, response){
-                blogService.createPost();
-
-                response.render('index', {
-                    title: 'post'
-                });
+            server.post('/create', function(request, response){
+                // TODO: blogService.createPost();
             });
         }
     });

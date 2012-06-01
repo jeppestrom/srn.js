@@ -1,5 +1,8 @@
-h1 srn.js
-p that shit cray
-ul
-    each post in posts
-        li= post.title
+each post in posts
+    div#content
+        section
+            div.post.contain
+                h1: a(href='#')= post.title
+                p= post.content
+                ul.actions
+                    li: a(href='#') Edit

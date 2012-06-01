@@ -2,5 +2,23 @@ doctype 5
 html
     head
         title= title
+        link(href='/css/application.css', media='screen', rel='stylesheet', type='text/css')
+        link(href='http://fonts.googleapis.com/css?family=Lato:300,900', rel='stylesheet', type='text/css')
+
     body
-        != body
+        header
+            h1: a(href='#') soren brokaer
+            span Clever tagline.
+
+            ul
+                li: a(href='https://twitter.com/soerenr') @soerenr
+                li: a(href='https://github.com/soerenr') github
+                li: a(href='/feed.rss') rss
+
+            span.powered-by
+                | powered by &nbsp;
+                a(href='https://github.com/soerenr/srn.js') srn.js
+
+        div#container
+            time June 01, 2012
+            != body
