@@ -1,7 +1,13 @@
-var UserSchema = new Schema({
-    username: String,
-    password: String,
-    email: String
-});
+define(function () {
+    var userModel = new Schema({
+        username: String,
+        password: String,
+        email: String
+    });
 
-this.User = mongoose.model('User', UserSchema);
+    var model = mongoose.model('User', userModel)
+
+    return {
+        model: model
+    };
+});
