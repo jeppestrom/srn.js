@@ -6,8 +6,6 @@ define(['framework/core', 'services/blogService', 'services/userService'], funct
     return core.Base.extend({
         constructor:function () {
             server.get('/manage', function(request, response){
-                console.log('request session login: ', request.session.login);
-
                 response.render('manage', {
                     title: 'manage - srn.io',
                     user: request.session.login
