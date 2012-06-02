@@ -1,5 +1,7 @@
-define(['express'], function(express){
+define(['./config', 'express'], function(config, express){
     var server = express.createServer();
+
+    var MongoStore = require('connect-mongo')(express);
 
     server.configure(function(){
         server.set('views', 'views');
@@ -8,6 +10,10 @@ define(['express'], function(express){
         server.use(express.bodyParser());
         server.use(express.methodOverride());
         server.use(express.cookieParser());
+        server.use(express.session({
+            secret: config.environment.devmode ? 'whatupdawg' : config.environment.session.secret,
+            store: new MongoStore({ url: config.environment.devmode ? config.mongodb.endpoints.localhost : config.mongodb.endpoints.heroku })
+        }));
         server.use(function (request, response, next) {
             response.removeHeader("X-Powered-By");
             next();
