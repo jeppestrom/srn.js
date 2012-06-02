@@ -210,3 +210,8 @@ form .permalink { position: absolute;left:-34px;top:12px;border:none;color:#ddd 
 .admin-view { font-size: 11px;margin:0 10px 2px 0;font-weight:900;text-transform:uppercase }
 nav.pagination { text-align: right;font-size:16px;font-weight:900;text-transform:uppercase;margin:0;padding:0 }
 nav.pagination a { margin-left: 10px }
+span.tagline { font-size:12px; }
+::selection {
+    background: #82c87d;
+    color: #000;
+}
