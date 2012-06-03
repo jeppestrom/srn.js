@@ -13,8 +13,14 @@ define(['framework/core', 'services/blogService'], function (core, blogService) 
                 });
             });
 
-            server.post('/create', function(request, response){
-                // TODO: blogService.createPost();
+            server.post('/post/create', function(request, response){
+                blogService.createPost({
+                    title:request.body.title,
+                    content: request.body.content,
+                    draft: request.body.draft
+                }, function () {
+                    response.redirect('/');
+                });
             });
         }
     });

@@ -4,15 +4,18 @@ define(['framework/core', 'models/postModel'], function (core, postModel) {
             this.postModel = postModel;
         },
 
-        createPost:function () {
+        createPost:function (options, callback) {
             var test = new this.postModel();
 
-            test.title = 'srn.js';
-            test.content = 'whatup';
+            test.title = options.title;
+            test.content = options.content;
+            test.draft = options.draft;
 
             test.save(function(error){
                 if (error != null)
                     throw new Error('Something went wrong..', error);
+
+                callback();
             });
         },
 

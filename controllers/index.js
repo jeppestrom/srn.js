@@ -13,26 +13,6 @@ define(['framework/core', 'services/blogService', 'services/userService'], funct
                     });
                 });
             });
-
-            server.get('/firstrun', function (request, response) {
-                userService.createUser();
-
-                response.redirect('/');
-            });
-
-            server.post('/login', function (request, response) {
-                userService.getUser({username: request.body.username, password: request.body.password}, function (user) {
-                    if (user == null)
-                        response.render('index', {
-                            title: 'srn.io',
-                            login: false
-                        });
-
-                    request.session.login = request.body.username;
-                    response.redirect('/manage');
-                });
-
-            });
         }
     });
 });
