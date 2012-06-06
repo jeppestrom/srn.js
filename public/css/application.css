@@ -217,3 +217,7 @@ span.tagline { font-size:12px; }
     color: #000;
 }
 p.nothingyet { margin:50px; }
+.archive { padding: 0; }
+.archive li { float: left; margin-bottom: 5px; width: 100%; }
+.archive a { min-width: 500px; float: left; border:0; }
+.arhive span { color: #8E8E8E; float: right; font-size:14px; }

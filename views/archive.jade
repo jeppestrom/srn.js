@@ -1,0 +1,12 @@
+if posts.length > 0
+        div#content
+            section
+                h2 Archive
+                ul.archive
+                    each post in posts
+                        li
+                            a(href='/')= post.title
+                            span= post.date
+
+else
+    p.nothingyet No entries yet.

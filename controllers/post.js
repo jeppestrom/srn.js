@@ -5,9 +5,9 @@ define(['framework/core', 'services/blogService'], function (core, blogService) 
     return core.Base.extend({
         constructor:function () {
             server.get('/archive', function(request, response){
-                blogService.getAllPosts(function (posts) {
+                blogService.getLivePosts(function (posts) {
                     response.render('archive', {
-                        title: 'post',
+                        title: 'Archive - srn.io',
                         posts: posts
                     });
                 });
