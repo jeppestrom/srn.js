@@ -4,7 +4,7 @@ if posts.length > 0
             section
                 div.post.contain
                     h1: a(href='#')= post.title
-                    p= post.content
+                    p!= markdown(post.content)
                     ul.actions
                         li.date= post.date
 else

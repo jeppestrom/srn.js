@@ -1,4 +1,4 @@
-define(['./config', 'express'], function(config, express){
+define(['./config', 'express', 'markdown'], function(config, express, markdown){
     var server = express.createServer();
 
     var MongoStore = require('connect-mongo')(express);
@@ -17,6 +17,11 @@ define(['./config', 'express'], function(config, express){
         server.use(function (request, response, next) {
             response.removeHeader("X-Powered-By");
             next();
+        });
+        server.helpers({
+            markdown: function(text){
+                return markdown.markdown.toHTML(text);
+            }
         });
         server.use(express.static('public'));
         server.use(server.router);
