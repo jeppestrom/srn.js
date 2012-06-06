@@ -14,11 +14,7 @@ define(['framework/core', 'services/blogService'], function (core, blogService) 
             });
 
             server.post('/post/create', function(request, response){
-                blogService.createPost({
-                    title:request.body.title,
-                    content: request.body.content,
-                    draft: request.body.draft
-                }, function () {
+                blogService.createPost(request.body, function () {
                     response.redirect('/');
                 });
             });

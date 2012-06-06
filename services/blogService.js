@@ -5,13 +5,13 @@ define(['framework/core', 'models/postModel'], function (core, postModel) {
         },
 
         createPost:function (options, callback) {
-            var test = new this.postModel();
+            var blogPost = new this.postModel();
 
-            test.title = options.title;
-            test.content = options.content;
-            test.draft = options.draft;
+            blogPost.title = options.title;
+            blogPost.content = options.content;
+            blogPost.draft = options.draft == 'true'; // dirty hack until we're gonna use json.parse()
 
-            test.save(function(error){
+            blogPost.save(function(error){
                 if (error != null)
                     throw new Error('Something went wrong..', error);
 
@@ -21,6 +21,18 @@ define(['framework/core', 'models/postModel'], function (core, postModel) {
 
         getAllPosts:function (callback) {
             this.postModel.find({}, function (error, posts) {
+                callback(posts);
+            });
+        },
+
+        getLivePosts:function (callback) {
+            this.postModel.find({draft: false}, function (error, posts) {
+                callback(posts);
+            });
+        },
+
+        getDrafts:function (callback) {
+            this.postModel.find({draft: true}, function (error, posts) {
                 callback(posts);
             });
         }
