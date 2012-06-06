@@ -17,9 +17,11 @@ define(['framework/core', 'models/userModel'], function (core, usermodel) {
         },
 
         getUser:function (options, callback) {
-            this.userModel.findOne({username:options.username}, function (error, user) {
-                if (error || user.password != options.password)
+            this.userModel.findOne({username:options.username, password: options.password}, function (error, user) {
+                if (error || user == null || user.password != options.password) {
                     callback(null);
+                    return;
+                }
 
                 callback(user);
             });
