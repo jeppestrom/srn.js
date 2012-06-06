@@ -31,5 +31,12 @@ define(['./config', 'express'], function(config, express){
         server.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
     });
 
+    this.ensureAuthenticated = function(request, response, next) {
+        if(request.session.user != null)
+            return next();
+
+        response.redirect('/');
+    }
+
     return server;
 });

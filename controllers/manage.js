@@ -5,10 +5,10 @@ define(['framework/core', 'services/blogService', 'services/userService'], funct
 
     return core.Base.extend({
         constructor:function () {
-            server.get('/manage', function(request, response){
+            server.get('/manage', ensureAuthenticated, function(request, response){
                 response.render('manage', {
                     title: 'manage - srn.io',
-                    user: request.session.login
+                    user: request.session.user
                 });
             });
 
@@ -21,19 +21,17 @@ define(['framework/core', 'services/blogService', 'services/userService'], funct
             server.post('/login', function (request, response) {
                 userService.getUser({username: request.body.username, password: request.body.password}, function (user) {
                     if (user == null)
-                        response.render('index', {
-                            title: 'srn.io',
-                            login: false
-                        });
-
-                    request.session.login = request.body.username;
-                    response.redirect('/manage');
+                        response.redirect('/');
+                    else {
+                        request.session.user = request.body.username;
+                        response.redirect('/manage');
+                    }
                 });
 
             });
 
             server.get('/manage/logout', function (request, response) {
-                request.session.login = null;
+                delete request.session.user;
 
                 response.redirect('/');
             });
