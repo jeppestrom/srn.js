@@ -1,9 +1,12 @@
-each post in posts
-    div#content
-        section
-            div.post.contain
-                h1: a(href='#')= post.title
-                p= post.content
-                p= post.draft
-                ul.actions
-                    li: a(href='#') Edit
+if posts.length > 0
+    each post in posts
+        div#content
+            section
+                div.post.contain
+                    h1: a(href='#')= post.title
+                    p= post.content
+                    p= post.draft
+                    ul.actions
+                        li.date= post.date
+else
+    p.nothingyet No entries yet.

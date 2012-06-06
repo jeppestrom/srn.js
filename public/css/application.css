@@ -152,7 +152,8 @@ code { font-size: 13px;background:#F2F2F2;padding:20px;margin:20px;display:block
 .left { float: left }
 .right { float: right }
 .actions { position: absolute;top:0;right:-60px;font-size:12px;margin:0;padding:0 }
-.actions li { display: inline-block;margin:0 10px 0 0 }
+.actions li.date { display: none;margin:0 10px 0 0 }
+.post:hover li.date { display: inline-block;margin:0 10px 0 0 }
 label { font-size: 16px;color:#fff;font-weight:bold;margin:0 8px 0 0 }
 #post_draft { position: relative;margin:0 20px 0 0 }
 .admin-links { position: absolute;text-align:right;top:18px;right:20px;margin:0 }
@@ -215,3 +216,4 @@ span.tagline { font-size:12px; }
     background: #82c87d;
     color: #000;
 }
+p.nothingyet { margin:50px; }
