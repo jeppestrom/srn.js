@@ -13,7 +13,7 @@ define(['framework/core', 'services/blogService'], function (core, blogService) 
                 });
             });
 
-            server.post('/post/create', function(request, response){
+            server.post('/post/create', ensureAuthenticated,  function(request, response){
                 blogService.createPost(request.body, function () {
                     response.redirect('/');
                 });
