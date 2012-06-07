@@ -6,7 +6,8 @@ define(['framework/core'], function(core){
             type: Date,
             default: Date.now
         },
-        draft: Boolean
+        draft: Boolean,
+        url: String
     });
 
     var postModel = core.mongoose.model('Post', postSchema);
