@@ -19,6 +19,12 @@ define(['framework/core', 'models/postModel'], function (core, postModel) {
             });
         },
 
+        getPostByUrl:function (options, callback) {
+            this.postModel.findOne({url:options.url}, function (error, post) {
+                callback(post);
+            });
+        },
+
         getAllPosts:function (callback) {
             this.postModel.find({}, function (error, posts) {
                 callback(posts);
