@@ -3,7 +3,7 @@ if posts.length > 0
         div#content
             section
                 div.post.contain
-                    h1: a(href='#')= post.title
+                    h1: a(href='#{post.url}')= post.title
                     p!= markdown(post.content)
                     ul.actions
                         li.date= post.date
