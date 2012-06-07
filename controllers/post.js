@@ -6,6 +6,15 @@ define(['framework/core', 'services/blogService'], function (core, blogService) 
         constructor:function () {
             server.get('/favicon.ico', function (request, response) { response.end(); }); // quick workaround, needs a proper fix
 
+            server.get('/archive', function(request, response){
+                blogService.getLivePosts(function (posts) {
+                    response.render('archive', {
+                        title: 'Archive - srn.io',
+                        posts: posts
+                    });
+                });
+            });
+
             server.get('/:url', function (request, response) {
                 var posts = [];
 
@@ -14,15 +23,6 @@ define(['framework/core', 'services/blogService'], function (core, blogService) 
 
                     response.render('index',{
                         title: post.title + ' - srn.io',
-                        posts: posts
-                    });
-                });
-            });
-
-            server.get('/archive', function(request, response){
-                blogService.getLivePosts(function (posts) {
-                    response.render('archive', {
-                        title: 'Archive - srn.io',
                         posts: posts
                     });
                 });
