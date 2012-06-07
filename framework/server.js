@@ -21,6 +21,9 @@ define(['./config', 'express', 'markdown'], function(config, express, markdown){
         server.helpers({
             markdown: function(text){
                 return markdown.markdown.toHTML(text);
+            },
+            analytics:function () {
+                return config.analytics;
             }
         });
         server.use(express.static('public'));

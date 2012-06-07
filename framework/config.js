@@ -17,6 +17,7 @@ define(function(){
 
     return {
         environment: environment,
-        mongodb: mongodb
+        mongodb: mongodb,
+        analytics: process.env.GOOGLE_ANALYTICS
     };
 })
