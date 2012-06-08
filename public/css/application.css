@@ -112,7 +112,7 @@ h1,
 #text-title textarea { font-weight: 900;font-size:35px }
 p { color: #555 }
 a,
-a:visited a:active { color: #000;text-decoration:none;border-bottom:1px solid #ddd }
+a:visited a:active { color: #000;text-decoration:none;border-bottom:1px solid #ddd;-webkit-transition: color .2s linear;-moz-transition: color .2s linear;-o-transition: color .2s linear;transition: color .2s linear; }
 a:hover,
 #admin #published h3 a:hover { color: red }
 header { width: 162px;border-right:1px solid #DDD;position:fixed;top:0;bottom:0;padding:20px 40px }
