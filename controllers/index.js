@@ -38,8 +38,8 @@ define(['framework/core', 'services/blogService', 'services/userService'], funct
                     posts.forEach(function (post) {
                         feed.item({
                             title: post.title,
-                            description: post.content.substring(0, 50),
-                            url: 'http://srn.io/', // TODO: post.url
+                            description: post.content.substring(0, 200) + '...',
+                            url: 'http://srn.io/' + post.url,
                             date: post.date
                         });
                     });
