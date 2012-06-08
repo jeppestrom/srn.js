@@ -19,6 +19,12 @@ define(['framework/core', 'services/blogService'], function (core, blogService) 
                 var posts = [];
 
                 blogService.getPostByUrl({url: request.params.url}, function (post) {
+                    if (post == null) {
+                        request.session.notfound = request.params.url;
+                        response.redirect('/404');
+                        return null;
+                    }
+
                     posts.push(post);
 
                     response.render('index',{

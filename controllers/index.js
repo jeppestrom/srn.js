@@ -14,6 +14,16 @@ define(['framework/core', 'services/blogService', 'services/userService'], funct
                 });
             });
 
+            server.get('/404', function (request, response) {
+                var notFoundUrl = request.session.notfound;
+                delete request.session.notfound;
+
+                response.render('404', {
+                    title: '404 Not Found - srn.io',
+                    url: notFoundUrl
+                });
+            });
+
             server.get('/feed.rss', function (request, response) {
                 var rss = require('rss');
                 var feed = new rss({
