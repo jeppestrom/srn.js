@@ -216,7 +216,7 @@ span.tagline { font-size:12px; }
     background: #82c87d;
     color: #000;
 }
-p.nothingyet { margin:50px; }
+.nothingyet { margin:50px; }
 .archive { padding: 0; }
 .archive li { margin-bottom: 5px; width: 100%; }
 .archive a { min-width: 500px; float: left; border:0; }
