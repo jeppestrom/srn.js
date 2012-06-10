@@ -19,6 +19,7 @@ define(['framework/core', 'services/blogService', 'services/userService'], funct
                 delete request.session.notfound;
 
                 response.render('404', {
+                    status: 404,
                     title: '404 Not Found - srn.io',
                     url: notFoundUrl
                 });
